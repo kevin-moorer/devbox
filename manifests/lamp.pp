@@ -124,6 +124,34 @@ class memcache {
 	package { "memcached":
 	  ensure => present,
 	}
+
+	file { "/etc/rc.d/rc.local":
+		owner   => "root",
+		group   => "root",
+		mode    => 644,
+		replace => true,
+		ensure  => present,
+		source  => "/vagrant/files/rclocal.txt",
+		require => File["/usr/local/bin/startMemcached.sh"]
+	}
+
+	file { "/usr/local/bin/startMemcached.sh":
+		owner   => "root",
+		group   => "root",
+		mode    => 775,
+		replace => true,
+		ensure  => present,
+		source  => "/vagrant/files/startMemcached.sh",
+	}
+
+	file { "/usr/local/bin/stopMemcached.sh":
+		owner   => "root",
+		group   => "root",
+		mode    => 775,
+		replace => true,
+		ensure  => present,
+		source  => "/vagrant/files/stopMemcached.sh",
+	}
 }
 
 class httpd {
