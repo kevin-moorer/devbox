@@ -32,6 +32,13 @@ class drush {
 		creates => "/root/drush-7.x-5.8.tar.gz",
 	}
 									  
+	file { "/var/www/drupal":
+	  ensure => "directory",
+		owner => "root",
+		group => "root",
+		mode => 775
+	}
+	
 	exec { "install-drush":
 	  cwd => "/var/www/drupal",
 		command => "/bin/tar xvzf /root/drush-7.x-5.8.tar.gz",
@@ -39,17 +46,10 @@ class drush {
 		require => [ Exec["download-drush"], File["/var/www/drupal"] ],
 	}
 
-	file { "/var/www/drupal":
-	  ensure => "directory",
-		owner => "root",
-		group => "wheel",
-		mode => 755
-	}
-
 	file { "/etc/profile.d/drush.sh":
 	  owner => "root",
 		group => "root",
-		mode => 600,
+		mode => 775,
 		replace => true,
 		ensure => present,
 		source => "/vagrant/files/drush.txt",
