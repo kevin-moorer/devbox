@@ -98,6 +98,9 @@ class misc {
 	  ensure => present
 	}
 
+  package { "unzip":
+	  ensure => present
+	}
 
 	file { "/var/www":
 	  ensure => "directory",
