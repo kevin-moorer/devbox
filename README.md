@@ -1,4 +1,4 @@
-# LAMP Setup based on CentOS 6.3 with Vagrant / Puppet
+# DEVBOX - Centos 6.3
 
 ## Overview
 
