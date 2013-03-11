@@ -31,19 +31,12 @@ class drush {
 		command => "/usr/bin/wget http://ftp.drupal.org/files/projects/drush-7.x-5.8.tar.gz",
 		creates => "/root/drush-7.x-5.8.tar.gz",
 	}
-									  
-	file { "/var/www/drupal":
-	  ensure => "directory",
-		owner => "root",
-		group => "root",
-		mode => 775
-	}
 	
 	exec { "install-drush":
 	  cwd => "/var/www/drupal",
 		command => "/bin/tar xvzf /root/drush-7.x-5.8.tar.gz",
 		creates => "/var/www/drupal/drush",
-		require => [ Exec["download-drush"], File["/var/www/drupal"] ],
+		require => [ Exec["download-drush"], File["/var/www/drupal"] ]
 	}
 
 	file { "/etc/profile.d/drush.sh":
@@ -103,6 +96,21 @@ class misc {
 
 	package { "subversion":
 	  ensure => present
+	}
+
+
+	file { "/var/www":
+	  ensure => "directory",
+		owner => "root",
+		group => "root",
+		mode => 775
+	}
+
+	file { "/var/www/drupal":
+	  ensure => "directory",
+		owner => "root",
+		group => "root",
+		mode => 775
 	}
 }
 
@@ -188,9 +196,9 @@ class phpdev {
 	  ensure  => present,
 	}
 
-	package { "libjpeg-devel":
-	  ensure  => present,
-	}
+	#package { "libjpeg-devel":
+	#  ensure  => present,
+	#}
 
 	package { "libvpx-devel":
 	  ensure  => present,
