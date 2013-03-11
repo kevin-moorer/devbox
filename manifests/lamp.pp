@@ -48,6 +48,18 @@ class drush {
 		source => "/vagrant/files/drush.txt",
     require => [ Exec["install-drush"], File["/var/www/drupal"] ]
   }
+
+#	exec { "pecl-uploadprogress":
+#	  cwd => "/root",
+#		command => "/usr/bin/pecl install uploadprogress"
+#  }
+
+	file { "/etc/php.d/uploadprogress.ini":
+	  ensure => present,
+		source => "/vagrant/files/uploadprogress.txt",
+		replace => true,
+#		require => Exec["pecl-uploadprogress"]
+	}
 }
 
 #note - currently the mongo stuff does not get downloaded from here, but i'll add it anyway
