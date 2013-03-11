@@ -31,7 +31,7 @@ Clone this repo
 
 ```bash
 
-git clone https://github.com/pdaether/LAMP-CentOS-with-Vagrant.git .
+git clone https://github.com/kevin-moorer/devbox.git .
 
 ```
 
