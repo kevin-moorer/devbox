@@ -39,6 +39,19 @@ class drush {
 		require => [ Exec["download-drush"], File["/var/www/drupal"] ]
 	}
 
+	exec { "download-consoletable":
+    cwd => "/root",
+		command => "/usr/bin/wget http://download.pear.php.net/package/Console_Table-1.1.3.tgz",
+		creates => "/root/Console_Table-1.1.3.tgz"
+	}
+
+  exec { "install-consoletable":
+	  cwd => "/var/www/drupal/drush/lib",
+		command => "/bin/tar xvzf /root/Console_Table-1.1.3.tgz",
+		creates => "/var/www/drupal/drush/lib/Console_Table-1.1.3",
+		require => [ Exec["install-drush"], Exec["download-consoletable"] ]
+	}
+
 	file { "/etc/profile.d/drush.sh":
 	  owner => "root",
 		group => "root",
@@ -46,7 +59,7 @@ class drush {
 		replace => true,
 		ensure => present,
 		source => "/vagrant/files/drush.txt",
-    require => [ Exec["install-drush"], File["/var/www/drupal"] ]
+    require => [ Exec["install-drush"], File["/var/www/drupal"], Exec["install-consoletable"] ]
   }
 
 #	exec { "pecl-uploadprogress":
