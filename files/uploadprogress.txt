@@ -1,0 +1,2 @@
+extension=uploadprogress.so
+apc.rfc1867 = 1

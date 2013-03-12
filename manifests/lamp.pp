@@ -153,13 +153,13 @@ class memcache {
 	  ensure => present,
 	}
 
-	file { "/etc/rc.d/rc.local":
-		owner   => "root",
-		group   => "root",
-		mode    => 644,
+	file { "/etc/init.d/memcached2":
+		owner => "root",
+		group => "root",
+		mode => 755,
 		replace => true,
 		ensure  => present,
-		source  => "/vagrant/files/rclocal.txt",
+		source  => "/vagrant/files/memcached_init.txt",
 		require => File["/usr/local/bin/startMemcached.sh"]
 	}
 
@@ -180,6 +180,13 @@ class memcache {
 		ensure  => present,
 		source  => "/vagrant/files/stopMemcached.sh",
 	}
+
+	service { "memcached2":
+	  ensure => "running",
+		enable => true,
+		provider => init,
+    require => [ File["/etc/init.d/memcached2"], Package["memcached"], File["/usr/local/bin/startMemcached.sh"] ]
+  }
 }
 
 class httpd {
