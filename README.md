@@ -35,7 +35,7 @@ http://virtualbox.org
 Vagrant (on mac) 
 gem install vagrant
 
-Facter, Hiera, Puppet
+Facter, Hiera, Puppet  
 http://docs.puppetlabs.com/guides/installation.html#mac-os-x
 http://docs.puppetlabs.com/guides/installation.html#with-launchd
 
@@ -44,9 +44,7 @@ http://docs.puppetlabs.com/guides/installation.html#with-launchd
 Clone this repo
 
 ```bash
-
 git clone https://github.com/kevin-moorer/devbox.git .
-
 ```
 
 or just download the source code as Zip file.
@@ -54,9 +52,7 @@ or just download the source code as Zip file.
 Start the VM:
 
 ```bash
-
 vagrant up
-
 ```
 
 ## Usage
@@ -78,3 +74,70 @@ To halt the VM:
 ```bash
 vagrant halt
 ```
+
+Other useful vagrant commands:
+
+Suspend the VM
+```bash
+vagrant suspend 
+```
+
+Resume the VM from the suspended state
+```bash
+vagrant resume
+```
+
+While the VM is still in the 'up' state, Re-run the puppet script (lamp.pp)
+```bash
+vagrant provision
+```
+
+Fully reload the VM
+```bash
+vagrant reload
+```
+
+Show the current state of the VM
+```bash
+vagrant status
+```
+
+
+## Centos Tips
+
+Services
+
+Services can be accessed thru the command 'service SERVICENAME command'.
+For example, to restart apache: service httpd restart
+
+Some of the key services around development are:
+MongoDB (mongod)
+Apache (httpd)
+Memcached (memcached2)
+Network Services (network) - for the whole OS
+MySQL (mysqld)
+
+
+Some operations (installing stuff, changing the status of a service, etc.) will require you to be 
+the root user. To switch to the root user, use 'su -' and the password is 'vagrant'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
