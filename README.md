@@ -36,9 +36,10 @@ http://virtualbox.org
 gem install vagrant
 
 * Facter, Hiera, Puppet  
-http://docs.puppetlabs.com/guides/installation.html#mac-os-x
-http://docs.puppetlabs.com/guides/installation.html#with-launchd
+http://docs.puppetlabs.com/guides/installation.html#mac-os-x  
 
+Follow these instructions for installation on Mac OS X:  
+http://docs.puppetlabs.com/guides/installation.html#with-launchd
 
 
 Clone this repo
@@ -108,14 +109,17 @@ vagrant status
 Services
 
 Services can be accessed thru the command 'service SERVICENAME command'.
-For example, to restart apache: service httpd restart
+For example, to restart apache: 
+```bash 
+service httpd restart
+```
 
 Some of the key services around development are:
-MongoDB (mongod)
-Apache (httpd)
-Memcached (memcached2)
-Network Services (network) - for the whole OS
-MySQL (mysqld)
+* MongoDB (mongod)
+* Apache (httpd)
+* Memcached (memcached2)
+* Network Services (network) - for the whole OS
+* MySQL (mysqld)
 
 
 Some operations (installing stuff, changing the status of a service, etc.) will require you to be 
