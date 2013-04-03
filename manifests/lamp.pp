@@ -135,6 +135,7 @@ class misc {
 	  ensure => present
 	}
 
+/* 
   package { "vixie-cron":
 	  ensure => present
 	}
@@ -148,6 +149,7 @@ class misc {
 		enable => true,
 		require => Package["crontabs","vixie-cron"]
 	}
+*/
 
 	file { "/var/www":
 	  ensure => "directory",
