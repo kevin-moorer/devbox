@@ -75,6 +75,14 @@ class drush {
 	}
 }
 
+class nodejs {
+  package { "node":
+	  ensure => present
+	}
+
+}
+
+
 #note - currently the mongo stuff does not get downloaded from here, but i'll add it anyway
 class 10gen {
   file { "/etc/yum.repos.d/10gen.repo":
@@ -125,6 +133,20 @@ class misc {
 
   package { "unzip":
 	  ensure => present
+	}
+
+  package { "vixie-cron":
+	  ensure => present
+	}
+
+	package { "crontabs":
+	  ensure => present
+	}
+
+  service { "crond":
+	  ensure => running,
+		enable => true,
+		require => Package["crontabs","vixie-cron"]
 	}
 
 	file { "/var/www":
@@ -448,3 +470,4 @@ include php
 include memcache
 include phpmyadmin
 include drush
+#include nodejs

@@ -37,6 +37,10 @@ Vagrant::Config.run do |config|
   #config.vm.share_folder("v-webroot", "/webroot", "webroot", :create => true, :owner=> 'vagrant', :group=>'vagrant', :extra => 'dmode=775,fmode=775')
   config.vm.share_folder("v-webroot", "/webroot", "./webroot", :nfs => true)
 
+  #configure memory setting
+	config.vm.customize ["modifyvm", :id, "--memory", 1024]
+
+
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
