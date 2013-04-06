@@ -134,9 +134,8 @@ class misc {
   package { "unzip":
 	  ensure => present
 	}
-
-/* 
-  package { "vixie-cron":
+ 
+  package { "cronie":
 	  ensure => present
 	}
 
@@ -147,9 +146,8 @@ class misc {
   service { "crond":
 	  ensure => running,
 		enable => true,
-		require => Package["crontabs","vixie-cron"]
+		require => Package["crontabs","cronie"]
 	}
-*/
 
 	file { "/var/www":
 	  ensure => "directory",
