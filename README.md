@@ -33,7 +33,7 @@ Download and install the following (facter must be installed before puppet)
 http://virtualbox.org
 
 * Vagrant (on mac)   
-gem install vagrant
+gem install vagrant or download the dmg from vagrantup.com
 
 * Facter, Hiera, Puppet  
 http://docs.puppetlabs.com/guides/installation.html#mac-os-x  
