@@ -56,11 +56,6 @@ Start the VM:
 vagrant up
 ```
 
-If you don't see Running Puppet with lamp.pp, run the provisioner:
-
-```bash
-vagrant provision
-```
 
 
 ## Usage
