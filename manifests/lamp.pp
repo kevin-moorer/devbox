@@ -62,17 +62,22 @@ class drush {
     require => [ Exec["install-drush"], File["/var/www/drupal"], Exec["install-consoletable"] ]
   }
 
-#	exec { "pecl-uploadprogress":
-#	  cwd => "/root",
-#		command => "/usr/bin/pecl install uploadprogress"
-#  }
+
+
+
+	exec { "pecl-uploadprogress":
+	  cwd => "/root",
+          command => "/usr/bin/pecl install uploadprogress",
+          require => Package["php-pear"]
+        }
 
 	file { "/etc/php.d/uploadprogress.ini":
 	  ensure => present,
-		source => "/vagrant/files/uploadprogress.txt",
-		replace => true,
-#		require => Exec["pecl-uploadprogress"]
+	  source => "/vagrant/files/uploadprogress.txt",
+          replace => true,
+          require => Exec["pecl-uploadprogress"]
 	}
+
 }
 
 class nodejs {
