@@ -27,8 +27,7 @@ DON'T use this VM in a production environment.
 Before you start: 
 I am using a 64 bit version of CentOS as base box. So make sure that you can virtualize a 64 bit system.
 
-Download and install the following 
-#(facter must be installed before puppet)
+Download and install the following:
 
 * VirtualBox  
 http://virtualbox.org
@@ -36,11 +35,6 @@ http://virtualbox.org
 * Vagrant (on mac)   
 gem install vagrant or download the dmg from vagrantup.com
 
-#* Facter, Hiera, Puppet  
-#http://docs.puppetlabs.com/guides/installation.html#mac-os-x  
-
-#Follow these instructions for installation on Mac OS X:  
-#http://docs.puppetlabs.com/guides/installation.html#with-launchd
 
 
 Clone this repo
